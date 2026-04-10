@@ -18,3 +18,14 @@ provider "google" {
   project = "thailand-433607"
   region  = "us-central1"
 }
+
+
+resource "null_resource" "check_ansible" {
+  triggers = {
+    always_run = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = "ansible --version"
+  }
+}
