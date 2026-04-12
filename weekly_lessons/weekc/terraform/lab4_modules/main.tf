@@ -56,8 +56,22 @@ module "postgres" {
   network  = module.vpc.network_id
 
   db_name     = "chewbacca"
+
+  #Chewbacca (Hard Coded)
   db_user     = "chewie"
   db_password = "supersecret123"
+
+  # Han (Security Manager)
+  han_user     = "han"
+  han_password = "never-tell-me-the-odds"
+}
+}
+
+module "han_secret" {
+  source = "./modules/secrets"
+
+  name         = "han-db-password"
+  secret_value = "never-tell-me-the-odds"
 }
 
 
