@@ -32,3 +32,8 @@ resource "google_compute_instance_template" "template" {
 
   tags = ["http-server"]
 }
+
+resource "google_project_iam_member" "secret_access" {
+  role   = "roles/secretmanager.secretAccessor"
+  member = "serviceAccount:${google_service_account.kubernetes.email}"
+}
